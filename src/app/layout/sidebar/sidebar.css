@@ -1,5 +1,14 @@
+*{
+    border: 1px solid red;
+}
+
 .sidebar-menu{
     border-right: 1px solid #e4e7ec;
+}
+
+.menu_name{
+    font-size: 15px;
+    width: 100%;
 }
 
 .park-button{
@@ -10,11 +19,43 @@
     height: 60px;
 }
 
+.menu_item {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 8px;
+    padding: 6px;
+}
+
+.menu_item:hover {
+    background-color: #C5D8F5;
+}
+
+.menu_item.active {
+    background-color: #5994D8;
+    color: white;
+}
+
 .park-logo{
     border-radius: 50%;
     background-color: #101828;
     width: 5px;
     margin: auto;
+}
+
+.live{
+    display: flex;
+    font-size: 12px;
+    height: 24px;
+    width: 50px;
+    float: right;
+    border-radius: 16%;
+    background-color: #1A56A0;
+    color: white;
+}
+
+.sidebar_middle{
+  display: block;
+  border-bottom: 1px solid #e4e7ec;  
 }
 
 .sidebar_top{

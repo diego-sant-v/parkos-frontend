@@ -18,15 +18,54 @@
         </div>
     </div>
 
-    <div class="block-4/6">
-        <div class="sidebar">
-            2
+    <div class="block-4/6 sidebar_middle">
+        <div class="m-2">
+            <span>PRINCIPAL</span>
+            @for(menu of menusList; track menu){
+                <div class="menu_item grid mb-2 grid-cols-[10%_60%_30%]"
+                    [class.active]="activeMenu === menu.name">
+                    <lucide-icon class="mt-[5%]" [name]="menu.icon" [size]="20" />
+                <div class="ml-1 h-8">
+                    <span class="menu_name">{{menu.name}}</span>
+                </div>
+
+                <div class="ml-1 h-8">
+                    <div class="live">
+                        <span class="m-auto">{{menu.badge}}</span>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+
+        <div class="management_menu">
+            <div class="grid grid-cols-3">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="grid grid-cols-3">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="grid grid-cols-3">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </div>
 
     <div class="block-1/6">
         <div class="sidebar_bottom">
-            3
+            <div class="grid grid-cols-3">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </div>
 </div>
