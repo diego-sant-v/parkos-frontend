@@ -1,0 +1,28 @@
+.title-register {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+}
+
+.info-title {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-sub);
+  margin-top: 4px;
+}
+
+.warning{
+    background-color: var(--color-primary-500);
+    border-radius: 6px;
+    height: 3rem;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-50)
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
-import { Menus } from '../../models/menus.model';
+import { Menus } from '../../model/menus.model';
 
 @Component({
   selector: 'app-sidebar',

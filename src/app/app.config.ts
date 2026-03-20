@@ -2,7 +2,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, importProvidersF
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { LucideAngularModule, LayoutDashboard, Car, Plus, List, Users, BarChart2, Settings, Menu } from 'lucide-angular';
+import { LucideAngularModule, LayoutDashboard, Car, Plus, List, Users, BarChart2, Settings, Menu, Lightbulb } from 'lucide-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -10,7 +10,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     importProvidersFrom(
-      LucideAngularModule.pick({ LayoutDashboard, Car, Plus, List, Users, BarChart2, Settings, Menu })
+      LucideAngularModule.pick({ LayoutDashboard, Car, Plus, List, Users, BarChart2, Settings, Menu, Lightbulb })
     )
   ]
 };
