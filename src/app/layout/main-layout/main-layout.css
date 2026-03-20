@@ -1,0 +1,31 @@
+.layout-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.layout-content {
+  flex: 1;
+  margin-left: 240px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-width: 0;
+  background-color: var(--color-bg);
+  transition: margin-left 0.25s ease;
+}
+
+/* Tablet: sidebar compacta 68px */
+@media (max-width: 1024px) {
+  .layout-content {
+    margin-left: 68px;
+  }
+}
+
+/* Mobile: sidebar é overlay, conteúdo ocupa tudo */
+@media (max-width: 768px) {
+  .layout-content {
+    margin-left: 0;
+  }
+}

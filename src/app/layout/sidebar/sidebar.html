@@ -1,71 +1,69 @@
-<div class="block-screen sidebar-menu">
-    <div class="block-1/6">
-        <div class="sidebar_top">
-            <div class="park-button">
-                <div class="park-logo">
-                    P
-                </div>
-            </div>
+<!-- Botão hamburguer (mobile) -->
+<button class="hamburguer-btn" (click)="toggleMenu()">
+  <lucide-icon name="menu" [size]="20" />
+</button>
 
-            <div class="park-info ml-2">
-                <div class="park-name">
-                    <span style="color: #101828;">Park</span>
-                    <span style="color: #2D6EC9;">OS</span>
-                </div>
-                
-                <span style="font-size: 12px; font-weight: 400;">Gestão de Estacionamento</span>    
-            </div>
+<!-- Overlay (mobile) -->
+<div class="sidebar-overlay" [class.open]="menuOpen" (click)="toggleMenu()"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar-menu" [class.open]="menuOpen">
+
+  <!-- TOPO -->
+  <div class="sidebar_top">
+    <div class="park-button">
+      <div class="park-logo">P</div>
+    </div>
+    <div class="park-info">
+      <div class="park-name">
+        <span style="color: var(--color-text)">Park</span>
+        <span style="color: var(--color-primary-500)">OS</span>
+      </div>
+      <span class="park-subtitle">Gestão de Estacionamento</span>
+    </div>
+  </div>
+
+  <!-- MEIO -->
+  <div class="sidebar_middle">
+
+    <div class="menu-section">
+      <span class="menu-section-label">Principal</span>
+
+      @for(menu of menusList; track menu) {
+        <div
+          class="menu_item"
+          [routerLink]="menu.pathUrl"
+          routerLinkActive="active"
+          (click)="onMenuClick()">
+
+          <span class="menu-icon">
+            <lucide-icon [name]="menu.icon" [size]="18" />
+          </span>
+
+          <span class="menu_name">{{ menu.name }}</span>
+
+          @if(menu.badge) {
+            <span class="live">{{ menu.badge }}</span>
+          }
         </div>
+      }
     </div>
 
-    <div class="block-4/6 sidebar_middle">
-        <div class="m-2">
-            <span>PRINCIPAL</span>
-            @for(menu of menusList; track menu){
-                <div class="menu_item grid mb-2 grid-cols-[10%_60%_30%]"
-                    [class.active]="activeMenu === menu.name">
-                    <lucide-icon class="mt-[5%]" [name]="menu.icon" [size]="20" />
-                <div class="ml-1 h-8">
-                    <span class="menu_name">{{menu.name}}</span>
-                </div>
-
-                <div class="ml-1 h-8">
-                    <div class="live">
-                        <span class="m-auto">{{menu.badge}}</span>
-                    </div>
-                </div>
-            </div>
-            }
-        </div>
-
-        <div class="management_menu">
-            <div class="grid grid-cols-3">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
-            <div class="grid grid-cols-3">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
-            <div class="grid grid-cols-3">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
+    <div class="menu-section">
+      <span class="menu-section-label">Gestão</span>
     </div>
 
-    <div class="block-1/6">
-        <div class="sidebar_bottom">
-            <div class="grid grid-cols-3">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
+  </div>
+
+  <!-- RODAPÉ -->
+  <div class="sidebar_bottom">
+    <div class="user-card">
+      <div class="user-avatar">AB</div>
+      <div>
+        <div class="user-name">Admin Brenno</div>
+        <div class="user-role">Gerente · Turno 2</div>
+      </div>
     </div>
+  </div>
+
 </div>

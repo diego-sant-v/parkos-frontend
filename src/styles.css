@@ -1,3 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
 @import 'tailwindcss';
+
+/* ============================================
+   PARKOS — DESIGN TOKENS (CSS VARIABLES)
+   ============================================ */
+:root {
+  /* Primárias */
+  --color-primary-50:  #e8f0fb;
+  --color-primary-100: #c5d8f5;
+  --color-primary-200: #9dbde8;
+  --color-primary-400: #5994d8;
+  --color-primary-500: #2d6ec9;
+  --color-primary-600: #1a56a0;
+  --color-primary-800: #0c3f78;
+  --color-primary-900: #062751;
+
+  /* Success */
+  --color-success-50:  #e6f7f1;
+  --color-success-100: #b3e8d4;
+  --color-success-500: #0ea66e;
+  --color-success-700: #097a52;
+
+  /* Danger */
+  --color-danger-50:  #fdf0f0;
+  --color-danger-100: #f8cece;
+  --color-danger-500: #d63b3b;
+  --color-danger-700: #a32a2a;
+
+  /* Warning */
+  --color-warning-50:  #fff3e0;
+  --color-warning-200: #ffd8a0;
+  --color-warning-500: #e07d10;
+  --color-warning-700: #a85a09;
+
+  /* Neutros */
+  --color-white:      #ffffff;
+  --color-bg:         #f0f2f5;
+  --color-surface:    #ffffff;
+  --color-surface-2:  #f7f8fa;
+  --color-border:     #e4e7ec;
+  --color-border-2:   #d0d5dd;
+  --color-text:       #101828;
+  --color-text-sub:   #475467;
+  --color-text-muted: #98a2b3;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(16,24,40,0.06), 0 1px 2px rgba(16,24,40,0.04);
+  --shadow:    0 4px 12px rgba(16,24,40,0.08), 0 2px 4px rgba(16,24,40,0.04);
+
+  /* Bordas */
+  --radius-sm: 6px;
+  --radius:    10px;
+  --radius-lg: 14px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Faz os elementos host do Angular não quebrarem o flex */
+app-root,
+app-sidebar {
+  display: contents;
+}

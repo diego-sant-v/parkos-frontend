@@ -1,27 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { Menus } from '../../models/menus.model';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [LucideAngularModule],
+  standalone: true,
+  imports: [LucideAngularModule, RouterLink, RouterLinkActive],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
-export class Sidebar {
-  menusList: Array<Menus> = [];
-  activeMenu: string = '';
-  constructor(private router: Router){
+export class Sidebar implements OnInit {
 
+  menusList: Menus[] = [];
+
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
+
+  onMenuClick() {
+    this.menuOpen = false;
+  }
+
   ngOnInit(): void {
     this.generateMenusList();
-  }
-
-  navigateMenu(menu: Menus) {
-    this.activeMenu = menu.name;
-    this.router.navigate([menu.pathUrl]);
   }
 
   generateMenusList() {
@@ -30,21 +34,19 @@ export class Sidebar {
         badge: "Ao vivo",
         name: "Dashboard",
         icon: "layout-dashboard",
-        pathUrl: "/dashboard"
+        pathUrl: "dashboard"
       },
-
       {
         badge: "1.204",
         name: "Veículos",
-        icon: "plus",
-        pathUrl: "/vehicle"
+        icon: "car",
+        pathUrl: "vehicle"
       },
-
       {
         badge: "",
         name: "Cadastrar Veículo",
         icon: "plus",
-        pathUrl: "/add-vehicle"
+        pathUrl: "add-vehicle"
       }
     ];
   }
