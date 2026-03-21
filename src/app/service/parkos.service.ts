@@ -3,7 +3,9 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { VehicleModel } from "../model/vehicle.model";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ParkOsService{
     url: string = "http://localhost:8080/parking";
     constructor(private httpClient: HttpClient){}
@@ -14,5 +16,9 @@ export class ParkOsService{
 
     findAllVehicles():Observable<VehicleModel>{
         return this.httpClient.get<VehicleModel>(this.url + "/findAll");
+    }
+
+    countParkedVehicles():Observable<Number>{
+        return this.httpClient.get<Number>(this.url + "/countParked")
     }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { Menus } from '../../model/menus.model';
+import { ParkOsService } from '../../service/parkos.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,6 +13,9 @@ import { Menus } from '../../model/menus.model';
   styleUrl: './sidebar.css',
 })
 export class Sidebar implements OnInit {
+  countAllParked: Number = 0;
+
+  constructor(private parkosService: ParkOsService){}
 
   menusList: Menus[] = [];
 
@@ -26,6 +31,13 @@ export class Sidebar implements OnInit {
 
   ngOnInit(): void {
     this.generateMenusList();
+    this.countParked();
+  }
+
+  countParked(){
+    this.parkosService.countParkedVehicles().subscribe(res => {
+      this.countAllParked = res;
+    })
   }
 
   generateMenusList() {
@@ -37,7 +49,7 @@ export class Sidebar implements OnInit {
         pathUrl: "dashboard"
       },
       {
-        badge: "1.204",
+        badge: this.countAllParked.toString(),
         name: "Veículos",
         icon: "car",
         pathUrl: "vehicle"
