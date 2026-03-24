@@ -1,17 +1,203 @@
-<div class="flex-1 p-8">
-  <h1 class="title-register">Cadastrar Veículo</h1>
-  <h3 class="info-title">Preencha os dados do veículo e do proprietário</h3>
+<div class="av-container">
+  <div class="av-wrapper">
 
-  <div class="warning mt-2 mb-2">
-                <lucide-icon name="lightbulb" [size]="20" [style.color]="'var(--color-warning-200)'"/>
-                <div class="ml-3">
-                  <span>
-                    <b>Dica:</b>
-                  </span>
+    <!-- HEADER — só título, sem botões -->
+    <div class="av-header">
+      <div class="av-header-left">
+        <div class="av-breadcrumb">Veículos <span>›</span> Cadastrar</div>
+        <h1 class="av-title">Cadastrar Veículo</h1>
+        <p class="av-subtitle">Preencha os dados do veículo e do proprietário</p>
+      </div>
+    </div>
 
-                  <span>
-                    Preencha a placa primeiro. O sistema consultará o DETRAN e preencherá automaticamente os dados do veículo.
-                  </span>
-                </div>
+    <!-- NOTICE -->
+    <div class="av-notice">
+      <lucide-icon name="lightbulb" [size]="16" [style.color]="'var(--color-primary-600)'" />
+      <div>
+        <strong>Dica:</strong> Preencha a placa primeiro. O sistema consultará o DETRAN e preencherá automaticamente os dados do veículo.
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <!-- TIPO DE CADASTRO — typeRegister na raiz do form -->
+      <div class="av-card">
+        <div class="av-card-header">
+          <div class="av-card-title-icon">📋</div>
+          <h2 class="av-card-title">Tipo de Cadastro</h2>
+        </div>
+        <div class="av-type-grid">
+
+          <label class="av-type-opt">
+            <input type="radio" formControlName="typeRegister" [value]="typeRegisterEnum.AVULSO" />
+            <div class="av-type-card">
+              <div class="av-type-icon">🎫</div>
+              <div class="av-type-info">
+                <span class="av-type-name">Avulso</span>
+                <span class="av-type-desc">Entrada única ou eventual</span>
+              </div>
+              <div class="av-type-check"><div class="av-check-circle"></div></div>
             </div>
+          </label>
+
+          <label class="av-type-opt">
+            <input type="radio" formControlName="typeRegister" [value]="typeRegisterEnum.MENSALISTA" />
+            <div class="av-type-card">
+              <div class="av-type-icon">📅</div>
+              <div class="av-type-info">
+                <span class="av-type-name">Mensalista</span>
+                <span class="av-type-desc">Contrato mensal recorrente</span>
+              </div>
+              <div class="av-type-check"><div class="av-check-circle"></div></div>
+            </div>
+          </label>
+
+          <label class="av-type-opt">
+            <input type="radio" formControlName="typeRegister" [value]="typeRegisterEnum.PERMANENTE" />
+            <div class="av-type-card">
+              <div class="av-type-icon">🔑</div>
+              <div class="av-type-info">
+                <span class="av-type-name">Permanente</span>
+                <span class="av-type-desc">Acesso permanente sem restrição</span>
+              </div>
+              <div class="av-type-check"><div class="av-check-circle"></div></div>
+            </div>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- DADOS DO VEÍCULO -->
+      <div class="av-card">
+        <div class="av-card-header">
+          <div class="av-card-title-icon">🚗</div>
+          <h2 class="av-card-title">Dados do Veículo</h2>
+        </div>
+
+        <div class="av-section-label">Identificação</div>
+
+        <div class="av-grid av-grid-3">
+          <div class="av-field">
+            <label class="av-label">Placa <span class="av-req">*</span></label>
+            <input class="av-input av-input-plate" type="text" formControlName="carLicensePlate" placeholder="ABC-1234" maxlength="8" />
+            <span class="av-hint">Mercosul ou padrão antigo</span>
+          </div>
+          <div class="av-field">
+            <label class="av-label">Cor <span class="av-req">*</span></label>
+            <input class="av-input" type="text" formControlName="color" placeholder="Prata Metálico" />
+          </div>
+          <div class="av-field">
+            <label class="av-label">Ano</label>
+            <input class="av-input" type="number" formControlName="year" placeholder="2024" />
+          </div>
+        </div>
+
+        <div class="av-grid av-grid-2 av-mt">
+          <div class="av-field">
+            <label class="av-label">Marca <span class="av-req">*</span></label>
+            <input class="av-input" type="text" formControlName="mark" placeholder="Toyota" />
+          </div>
+          <div class="av-field">
+            <label class="av-label">Modelo <span class="av-req">*</span></label>
+            <input class="av-input" type="text" formControlName="model" placeholder="Corolla Cross" />
+          </div>
+        </div>
+
+        <div class="av-grid av-grid-3 av-mt">
+          <div class="av-field">
+            <label class="av-label">Categoria</label>
+            <select class="av-input av-select" formControlName="category">
+              <option [value]="categoryEnum.PASSEIO">Passeio</option>
+              <option [value]="categoryEnum.SUV">SUV</option>
+              <option [value]="categoryEnum.MOTO">Moto</option>
+              <option [value]="categoryEnum.CAMINHONETE">Caminhonete</option>
+              <option [value]="categoryEnum.VAN">Van</option>
+              <option [value]="categoryEnum.UTILITARIO">Utilitário</option>
+              <option [value]="categoryEnum.ONIBUS">Ônibus</option>
+              <option [value]="categoryEnum.CAMINHAO">Caminhão</option>
+              <option [value]="categoryEnum.PCD">PCD</option>
+            </select>
+          </div>
+          <div class="av-field">
+            <label class="av-label">Combustível</label>
+            <select class="av-input av-select" formControlName="fuel">
+              <option [value]="fuelEnum.FLEX">Flex</option>
+              <option [value]="fuelEnum.GASOLINA">Gasolina</option>
+              <option [value]="fuelEnum.ETANOL">Etanol</option>
+              <option [value]="fuelEnum.DIESEL">Diesel</option>
+              <option [value]="fuelEnum.ELETRICO">Elétrico</option>
+              <option [value]="fuelEnum.HIBRIDO">Híbrido</option>
+              <option [value]="fuelEnum.GNV">GNV</option>
+            </select>
+          </div>
+          <div class="av-field">
+            <label class="av-label">Setor preferencial</label>
+            <select class="av-input av-select" formControlName="preferredSector">
+              <option [value]="preferredSectorEnum.QUALQUER">Qualquer disponível</option>
+              <option [value]="preferredSectorEnum.SETOR_A">Setor A</option>
+              <option [value]="preferredSectorEnum.SETOR_B">Setor B</option>
+              <option [value]="preferredSectorEnum.SETOR_C">Setor C</option>
+              <option [value]="preferredSectorEnum.COBERTO">Coberto</option>
+              <option [value]="preferredSectorEnum.TERREO">Térreo</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- DADOS DO PROPRIETÁRIO -->
+      <div class="av-card" formGroupName="driverVehicle">
+        <div class="av-card-header">
+          <div class="av-card-title-icon">👤</div>
+          <h2 class="av-card-title">Dados do Proprietário</h2>
+        </div>
+
+        <div class="av-grid av-grid-2">
+          <div class="av-field av-col-2">
+            <label class="av-label">Nome Completo <span class="av-req">*</span></label>
+            <input class="av-input" type="text" formControlName="name" placeholder="João da Silva" />
+          </div>
+          <div class="av-field">
+            <label class="av-label">CPF</label>
+            <input class="av-input" type="text" formControlName="document" placeholder="000.000.000-00" />
+          </div>
+          <div class="av-field">
+            <label class="av-label">Telefone</label>
+            <input class="av-input" type="text" formControlName="mobilePhone" placeholder="(11) 90000-0000" />
+          </div>
+          <div class="av-field">
+            <label class="av-label">E-mail</label>
+            <input class="av-input" type="email" formControlName="email" placeholder="joao@email.com" />
+          </div>
+          <div class="av-field">
+            <label class="av-label">Empresa / Bloco</label>
+            <input class="av-input" type="text" formControlName="company" placeholder="Opcional" />
+          </div>
+          <div class="av-field av-col-2">
+            <label class="av-label">Observações</label>
+            <textarea class="av-input av-textarea" formControlName="observation" rows="3"
+              placeholder="Informações adicionais sobre o veículo ou proprietário..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOTO DO VEÍCULO -->
+      <div class="av-card">
+        <div class="av-card-header">
+          <div class="av-card-title-icon">📷</div>
+          <h2 class="av-card-title">Foto do Veículo</h2>
+        </div>
+        <app-image-upload (imageBase64Change)="onImageUploaded($event)" />
+      </div>
+
+      <!-- FOOTER COM BOTÕES -->
+      <div class="av-footer-actions">
+        <button type="button" class="av-btn av-btn-ghost">Cancelar</button>
+        <div class="av-footer-right">
+          <button type="button" class="av-btn av-btn-outline">Salvar Rascunho</button>
+          <button type="submit" class="av-btn av-btn-primary">✓ Cadastrar Veículo</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
 </div>

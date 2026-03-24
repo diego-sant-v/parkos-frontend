@@ -1,0 +1,50 @@
+<!-- image-upload.html -->
+<div
+  class="iu-wrapper"
+  [class.iu-dragging]="isDragging"
+  [class.iu-has-preview]="preview"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave()"
+  (drop)="onDrop($event)"
+  (click)="!preview && triggerInput()">
+
+  <input
+    id="fileInput"
+    type="file"
+    accept="image/png, image/jpeg, image/jpg"
+    style="display:none"
+    (change)="onFileSelected($event)" />
+
+  @if (!preview) {
+    <div class="iu-empty">
+      <div class="iu-icon">
+        <lucide-icon name="camera" [size]="26" />
+      </div>
+      <p class="iu-text">Clique para adicionar ou arraste uma foto</p>
+      <span class="iu-hint">PNG, JPG · Máx. 5MB</span>
+    </div>
+  }
+
+  @if (preview) {
+    <div class="iu-preview">
+      <img [src]="preview" alt="Preview do veículo" class="iu-img" />
+      <div class="iu-overlay">
+        <button type="button" class="iu-btn iu-btn-remove"
+          (click)="$event.stopPropagation(); removeImage()">
+          <lucide-icon name="trash-2" [size]="14" />
+          Remover
+        </button>
+        <button type="button" class="iu-btn iu-btn-change"
+          (click)="$event.stopPropagation(); triggerInput()">
+          <lucide-icon name="image" [size]="14" />
+          Trocar foto
+        </button>
+      </div>
+    </div>
+    <div class="iu-filename">
+      <lucide-icon name="image" [size]="13" />
+      <span>{{ fileName }}</span>
+    </div>
+  }
+
+</div>
