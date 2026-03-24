@@ -1,9 +1,9 @@
 export enum FuelEnum {
-  FLEX = 'Flex',
-  GASOLINA = 'Gasolina',
-  ETANOL = 'Etanol',
-  DIESEL = 'Diesel',
-  ELETRICO = 'Elétrico',
-  HIBRIDO = 'Híbrido',
+  FLEX = 'FLEX',
+  GASOLINA = 'GASOLINA',
+  ETANOL = 'ETANOL',
+  DIESEL = 'DIESEL',
+  ELETRICO = 'ELÉTRICO',
+  HIBRIDO = 'HÍBRIDO',
   GNV = 'GNV'
 }

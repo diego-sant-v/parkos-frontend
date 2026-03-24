@@ -1,11 +1,11 @@
 export enum CategoryEnum{
-  PASSEIO = 'Passeio',
-  MOTO = 'Moto',
-  CAMINHONETE = 'Caminhonete',
-  UTILITARIO = 'Utilitário',
+  PASSEIO = 'PASSEIO',
+  MOTO = 'MOTO',
+  CAMINHONETE = 'CAMINHONETE',
+  UTILITARIO = 'UTILITÁRIO',
   SUV = 'SUV',
-  VAN = 'Van',
-  ONIBUS = 'Ônibus',
-  CAMINHAO = 'Caminhão',
+  VAN = 'VAN',
+  ONIBUS = 'ÔNIBUS',
+  CAMINHAO = 'CAMINHÃO',
   PCD = 'PCD'
 }

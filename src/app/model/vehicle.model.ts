@@ -4,7 +4,7 @@ import { PreferredSectorEnum } from "../enum/preferred-sector-enum";
 import { DriverVehicleModel } from "./driver-vehicle.model";
 
 export interface VehicleModel{
-    UUID: string;
+    UUID?: string;
     driverVehicle: DriverVehicleModel;
     carLicensePlate: string;
     color: string;

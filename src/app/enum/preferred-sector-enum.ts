@@ -1,8 +1,8 @@
 export enum PreferredSectorEnum {
-  QUALQUER = 'Qualquer disponível',
-  SETOR_A = 'Setor A',
-  SETOR_B = 'Setor B',
-  SETOR_C = 'Setor C',
-  COBERTO = 'Coberto',
-  TERREO = 'Térreo'
+  QUALQUER = 'QUALQUER',
+  SETOR_A = 'SETOR A',
+  SETOR_B = 'SETOR B',
+  SETOR_C = 'SETOR C',
+  COBERTO = 'COBERTO',
+  TERREO = 'TÉRREO'
 }
